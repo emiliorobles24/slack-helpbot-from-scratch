@@ -1,0 +1,35 @@
+# Slack app manifest. Create the app at api.slack.com/apps -> "From a manifest",
+# paste this file, then generate an app-level token (connections:write) for
+# Socket Mode and install to the workspace.
+display_information:
+  name: helpbot
+  description: Answers IT questions from the help center, escalates to a ticket when it cannot.
+  background_color: "#1a241f"
+features:
+  bot_user:
+    display_name: helpbot
+    always_online: true
+oauth_config:
+  scopes:
+    bot:
+      # Least privilege: read what is addressed to the bot and reply. No
+      # channels:history or groups:history, so the bot cannot read channel
+      # conversations at all; escalations carry their own context (the ticket
+      # button holds the question, the message holds the answer) instead of
+      # reading history. im:history exists only because the message.im event
+      # subscription requires it.
+      - app_mentions:read
+      - chat:write
+      - im:history
+      - im:read
+      - im:write
+settings:
+  event_subscriptions:
+    bot_events:
+      - app_mention
+      - message.im
+  interactivity:
+    is_enabled: true
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false

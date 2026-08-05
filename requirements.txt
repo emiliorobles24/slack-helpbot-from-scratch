@@ -1,0 +1,4 @@
+# Only needed for Slack mode and model answers.
+# dev_chat.py and eval.py run on the standard library alone.
+slack-bolt>=1.20
+anthropic>=0.90
