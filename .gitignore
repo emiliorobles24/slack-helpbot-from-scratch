@@ -1,0 +1,5 @@
+__pycache__/
+.env
+helpbot-ledger.jsonl
+tickets-outbox.jsonl
+
